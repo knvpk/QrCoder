@@ -14,8 +14,8 @@ class QrCoder
     protected $errorCorrection = QR_ECLEVEL_M;
     protected $size = 8;
     protected $frame = 3;
-    protected $color = 0xFFFFFF;
-    protected $backColor = 0x000000;
+    protected $color = 0x000000;
+    protected $backColor = 0xFFFFFF;
 
     protected $errorCorrections = [
         'L' => 'QR_ECLEVEL_L',
@@ -91,7 +91,7 @@ class QrCoder
 
     public function generate($text)
     {
-        return $this->generateWithFormat($text, $this->getFullpath(), $this->errorCorrection, $this->size, $this->frame, $this->color, $this->backColor);
+        return $this->generateWithFormat($text, $this->getFullpath(), $this->errorCorrection, $this->size, $this->frame, $this->backColor, $this->color);
 
     }
 
@@ -99,13 +99,13 @@ class QrCoder
     {
         switch ($this->format) {
             case 'png':
-                return $this->qr->png($text, $filepath, $errorCorrection, $pixel, $frame, false, $color, $backColor);
+                return $this->qr->png($text, $filepath, $errorCorrection, $pixel, $frame, false, $backColor, $color);
                 break;
             case 'svg':
-                return $this->qr->svg($text, $filepath, $errorCorrection, $pixel, $frame, false, $color, $backColor);
+                return $this->qr->svg($text, $filepath, $errorCorrection, $pixel, $frame, false, $backColor, $color);
                 break;
             case 'eps':
-                return $this->qr->eps($text, $filepath, $errorCorrection, $pixel, $frame, false, $color, $backColor);
+                return $this->qr->eps($text, $filepath, $errorCorrection, $pixel, $frame, false, $backColor, $color);
                 break;
             case 'canvas':
                 return $this->qr->canvas($text, $filepath, $errorCorrection, $pixel, $frame, false, $backColor, $color);
