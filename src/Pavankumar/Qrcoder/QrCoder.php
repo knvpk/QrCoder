@@ -127,5 +127,24 @@ class QrCoder
         return false;
     }
 
+    public function __call($method, $arguments)
+    {
+        $dataType = $this->createClass($method);
+
+        $dataType->create($arguments);
+
+
+        return $this->generate(strval($dataType));
+    }
+
+    private function createClass($method)
+    {
+        $class = 'Pavankumar\Qrcoder\DataTypes\\' . ucfirst(strtolower($method));
+
+        if (!class_exists($class)) throw new \BadMethodCallException;
+
+        return new $class;
+    }
+
 
 }
