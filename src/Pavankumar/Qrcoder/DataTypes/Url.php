@@ -1,29 +1,13 @@
 <?php namespace Pavankumar\Qrcoder\DataTypes;
-/**
- * Simple Laravel QrCode Generator
- * A simple wrapper for the popular BaconQrCode made for Laravel.
- *
- * @link http://www.simplesoftware.io
- * @author SimpleSoftware support@simplesoftware.io
- *
- */
 
 class Url implements DataTypeInterface
 {
 
-    /**
-     * The prefix of the QrCode
-     *
-     * @var string
-     */
+
     private $prefix = ['http://', 'https://'];
 
 
-    /**
-     * The latitude
-     *
-     * @var
-     */
+
     protected $url;
 
     protected $secure = false;

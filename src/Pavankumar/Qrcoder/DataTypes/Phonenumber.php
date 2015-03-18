@@ -1,28 +1,11 @@
 <?php namespace Pavankumar\Qrcoder\DataTypes;
-/**
- * Simple Laravel QrCode Generator
- * A simple wrapper for the popular BaconQrCode made for Laravel.
- *
- * @link http://www.simplesoftware.io
- * @author SimpleSoftware support@simplesoftware.io
- *
- */
+
 
 class PhoneNumber implements DataTypeInterface
 {
 
-    /**
-     * The prefix of the QrCode
-     *
-     * @var string
-     */
     private $prefix = 'tel:';
 
-    /**
-     * The phone number
-     *
-     * @var
-     */
     private $phoneNumber;
 
 
@@ -35,11 +18,6 @@ class PhoneNumber implements DataTypeInterface
 
     }
 
-    /**
-     * Returns the correct QrCode format.
-     *
-     * @return string
-     */
     public function __toString()
     {
         return $this->prefix . $this->phoneNumber;

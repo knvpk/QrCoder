@@ -1,22 +1,11 @@
 <?php namespace Pavankumar\Qrcoder\DataTypes;
 
 
-/**
- * Simple Laravel QrCode Generator
- * A simple wrapper for the popular BaconQrCode made for Laravel.
- *
- * @link http://www.simplesoftware.io
- * @author SimpleSoftware support@simplesoftware.io
- *
- */
+
 class Mecard implements DataTypeInterface
 {
 
-    /**
-     * The prefix of the QrCode
-     *
-     * @var string
-     */
+
     private $prefix = 'MECARD:';
 
     private $firstname;

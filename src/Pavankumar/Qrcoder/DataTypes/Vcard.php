@@ -4,14 +4,10 @@
 class Vcard implements DataTypeInterface
 {
 
-    /**
-     * The prefix of the QrCode
-     *
-     * @var string
-     */
+
     private $prefix = 'BEGIN:VCARD \r\n VERSION:3.0 \r\n ';
     private $suffix = 'END:VCARD';
-    private $separator = " \r\n";
+    private $separator = " \r\n ";
 
     private $firstname;
     private $lastname;
@@ -19,8 +15,11 @@ class Vcard implements DataTypeInterface
     private $organization;
     private $email;
     private $url;
-    private $mobile = [];
-    private $address = [];
+    private $mobile;
+    private $address;
+
+    private $mobileTypes = ["voice", "work", "pref"];
+    private $addressTypes = ["intl", "work", "postal", "parcel"];
 
 
     public function create(Array $arguments)
@@ -38,17 +37,29 @@ class Vcard implements DataTypeInterface
 
         $buildString = $this->prefix;
         if (isset($this->firstname) || isset($this->lastname)) {
-            $buildString .= "N:" . $this->firstname . "," . $this->lastname;
+            $buildString .= "N:" . $this->firstname . ";" . $this->lastname;
         }
-        if (isset($this->mobile)) $buildString .= "TEL:" . $this->mobile;
-        if (isset($this->email)) $buildString .= "EMAIL:" . $this->mobile;
-        if (isset($this->url)) $buildString .= "URL:" . $this->mobile;
-        if (isset($this->notes)) $buildString .= "Note:" . $this->mobile;
-        if (isset($this->bday)) $buildString .= "BDAY:" . $this->mobile;
-        if (isset($this->address)) $buildString .= "ADR:" . $this->mobile;
+        if (isset($this->displayname)) $buildString .= $this->separator . "FN:" . $this->displayname;
+        if (isset($this->organization)) $buildString .= $this->separator . "ORG:" . $this->organization;
+        if (isset($this->url)) $buildString .= $this->separator . "URL:" . $this->url;
+        if (isset($this->email)) $buildString .= $this->separator . "EMAIL:" . $this->email;
 
-        return $buildString;
+//        if (isset($this->mobile) && is_array($this->mobile)) {
+//            foreach ($this->mobile as $mobile) {
+//                $this->setMobile($buildString, $mobile);
+//            }
+//        }
+
+        if (isset($this->mobile)) $buildString .= $this->separator . "TEL;TYPE=work:" . $this->mobile;
+        if (isset($this->address)) $buildString .= $this->separator . "ADR;TYPE=work:" . $this->address;
+
+        return $buildString . $this->suffix;
     }
+
+//    private function setMobile($buildString,$mobile)
+//    {
+//
+//    }
 
 
     private function setProperties(Array $arguments)

@@ -1,6 +1,7 @@
 <?php namespace Pavankumar\Qrcoder;
 
 include('phpqrcode/qrlib.php');
+use Doctrine\Instantiator\Exception\InvalidArgumentException;
 use Pavankumar\Qrcoder\Exceptions\InvalidFormatException;
 use PhpSpec\Exception\Exception;
 
@@ -9,7 +10,6 @@ class QrCoder
     protected $qr;
     protected $format = 'svg';
     protected $destination = false;
-    protected $filename;
     protected $supportedFormats = ['svg', 'canvas', 'png', 'text', 'eps', 'raw'];
     protected $errorCorrection = QR_ECLEVEL_M;
     protected $size = 8;
@@ -41,17 +41,6 @@ class QrCoder
         }
     }
 
-    public function setTo($destination, $filename)
-    {
-        if (is_dir($destination))
-            $this->destination = $destination;
-        else {
-            throw new \InvalidArgumentException('Dir not found');
-        }
-
-        $this->filename = $filename;
-        return $this;
-    }
 
     public function setErrorCorrection($level)
     {
@@ -88,44 +77,48 @@ class QrCoder
         return $this;
     }
 
+    public function setDestination($filePath)
+    {
+        if (file_exists($filePath))
+            throw new InvalidArgumentException("File already exists");
+        fopen($filePath, 'w');
+        $this->destination = $filePath;
+        return $this;
+    }
+
 
     public function generate($text)
     {
-        return $this->generateWithFormat($text, $this->getFullpath(), $this->errorCorrection, $this->size, $this->frame, $this->backColor, $this->color);
+        return $this->generateWithFormat($text, $this->destination, $this->errorCorrection, $this->size, $this->frame, $this->backColor, $this->color);
 
     }
 
-    protected function generateWithFormat($text, $filepath, $errorCorrection, $pixel, $frame, $backColor, $color)
+    protected function generateWithFormat($text, $filePath, $errorCorrection, $pixel, $frame, $backColor, $color)
     {
         switch ($this->format) {
             case 'png':
-                return $this->qr->png($text, $filepath, $errorCorrection, $pixel, $frame, false, $backColor, $color);
+                return $this->qr->png($text, $filePath, $errorCorrection, $pixel, $frame, false, $backColor, $color);
                 break;
             case 'svg':
-                return $this->qr->svg($text, $filepath, $errorCorrection, $pixel, $frame, false, $backColor, $color);
+                return $this->qr->svg($text, $filePath, $errorCorrection, $pixel, $frame, false, $backColor, $color);
                 break;
             case 'eps':
-                return $this->qr->eps($text, $filepath, $errorCorrection, $pixel, $frame, false, $backColor, $color);
+                return $this->qr->eps($text, $filePath, $errorCorrection, $pixel, $frame, false, $backColor, $color);
                 break;
             case 'canvas':
-                return $this->qr->canvas($text, $filepath, $errorCorrection, $pixel, $frame, false, $backColor, $color);
+                return $this->qr->canvas($text, $filePath, $errorCorrection, $pixel, $frame, false, $backColor, $color);
                 break;
             case 'text':
-                return $this->qr->text($text, $filepath, $errorCorrection, $pixel, $frame);
+                return $this->qr->text($text, $filePath, $errorCorrection, $pixel, $frame);
                 break;
             case 'raw':
-                return $this->qr->raw($text, $filepath, $errorCorrection, $pixel, $frame);
+                return $this->qr->raw($text, $filePath, $errorCorrection, $pixel, $frame);
                 break;
             default:
                 throw new InvalidFormatException('Invalid format provided.');
         }
     }
 
-    protected function getFullpath()
-    {
-//        return $this->destination . $this->filename . '.' . $this->format;
-        return false;
-    }
 
     public function __call($method, $arguments)
     {
