@@ -4,7 +4,9 @@
 class PhoneNumber implements DataTypeInterface
 {
 
+
     private $prefix = 'tel:';
+
 
     private $phoneNumber;
 
@@ -17,6 +19,7 @@ class PhoneNumber implements DataTypeInterface
         if (array_key_exists("number", $text)) $this->phoneNumber = $text["number"];
 
     }
+
 
     public function __toString()
     {

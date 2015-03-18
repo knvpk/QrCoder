@@ -1,7 +1,6 @@
 <?php namespace Pavankumar\Qrcoder\DataTypes;
 
 
-
 class Mecard implements DataTypeInterface
 {
 
@@ -37,11 +36,11 @@ class Mecard implements DataTypeInterface
             $buildString .= "N:" . $this->firstname . "," . $this->lastname;
         }
         if (isset($this->mobile)) $buildString .= "TEL:" . $this->mobile;
-        if (isset($this->email)) $buildString .= "EMAIL:" . $this->mobile;
-        if (isset($this->url)) $buildString .= "URL:" . $this->mobile;
-        if (isset($this->notes)) $buildString .= "Note:" . $this->mobile;
-        if (isset($this->bday)) $buildString .= "BDAY:" . $this->mobile;
-        if (isset($this->address)) $buildString .= "ADR:" . $this->mobile;
+        if (isset($this->email)) $buildString .= "EMAIL:" . $this->email;
+        if (isset($this->url)) $buildString .= "URL:" . $this->url;
+        if (isset($this->notes)) $buildString .= "Note:" . $this->notes;
+        if (isset($this->bday)) $buildString .= "BDAY:" . $this->bday;
+        if (isset($this->address)) $buildString .= "ADR:" . $this->address;
 
         return $buildString;
     }

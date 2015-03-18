@@ -4,6 +4,7 @@
 class WiFi implements DataTypeInterface
 {
 
+
     private $prefix = 'WIFI:';
 
     private $separator = ';';

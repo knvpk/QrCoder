@@ -1,11 +1,11 @@
 <?php namespace Pavankumar\Qrcoder\DataTypes;
 
+
 class Url implements DataTypeInterface
 {
 
 
     private $prefix = ['http://', 'https://'];
-
 
 
     protected $url;
