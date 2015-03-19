@@ -5,7 +5,16 @@
     "php",
     "laravel",
     "Qrcode",
-    "barcode"
+    "barcode",
+    "Wifi",
+    "sms",
+    "email",
+    "mecard",
+    "vcard",
+    "svg qrcode",
+    "png qrcode",
+    "number",
+    "url"
   ],
   "license": "MIT",
   "authors": [
