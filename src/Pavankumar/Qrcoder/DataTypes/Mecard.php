@@ -78,7 +78,7 @@ class Mecard implements DataTypeInterface
     private function isValidEmail($email)
     {
         if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-            throw new InvalidArgumentException('Invalid email provided');
+            throw new \InvalidArgumentException('Invalid email provided');
         }
 
         return true;

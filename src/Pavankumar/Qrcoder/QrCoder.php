@@ -1,9 +1,9 @@
 <?php namespace Pavankumar\Qrcoder;
 
 include('phpqrcode/qrlib.php');
-use Doctrine\Instantiator\Exception\InvalidArgumentException;
+
 use Pavankumar\Qrcoder\Exceptions\InvalidFormatException;
-use PhpSpec\Exception\Exception;
+
 
 class QrCoder
 {
@@ -47,7 +47,7 @@ class QrCoder
         if (array_key_exists($level, $this->errorCorrections)) {
             $this->errorCorrection = $this->errorCorrections[$level];
         } else {
-            throw new Exception('Invalid ErrorCorrection value supported is L,M,Q,H');
+            throw new \Exception('Invalid ErrorCorrection value supported is L,M,Q,H');
         }
 
         return $this;
