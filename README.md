@@ -21,5 +21,6 @@ This is Laravel5 Pacakage built on top of [phpqrcode](https://github.com/t0k4rt/
     3. Margin.
     4. Error correction level.
     5. Format (svg,png,text,raw,eps and canvas).
+
     
     
