@@ -21,13 +21,6 @@ This is Laravel5 Pacakage built on top of [phpqrcode](https://github.com/t0k4rt/
     3. Margin.
     4. Error correction level.
     5. Format (svg,png,text,raw,eps and canvas).
-##Installation
-### Using Composer(recommended)
-First add the below lines to your `require` to your `composer.json`.
-    require:{
-    "pavankumar/qrcoder":"dev"
-    }
-Next, run the `composer update` command.
 
     
     
