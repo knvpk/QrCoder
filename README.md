@@ -1,7 +1,7 @@
 # QrCoder
 This is Laravel5 Pacakage built on top of [phpqrcode](https://github.com/t0k4rt/phpqrcode) for generating Qrcodes with different formats and helper functions to make programming dead easy.
 
->Almost the package is finished.
+
 
 ### Introduction
     QrCoder is an simple wrapper around the [phpqrcode](https://github.com/t0k4rt/phpqrcode) for generating 2-D QrCodes
