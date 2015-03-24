@@ -52,8 +52,8 @@ QR Code is registered trademarks of DENSO WAVE INCORPORATED in JAPAN and other c
 Reed-Solomon code encoder is written by Phil Karn, KA9Q. Copyright (C) 2002, 2003, 2004, 2006 Phil Karn, KA9Q
 
 ##Todo
-   tests
-   wiki pages documentation
+   1. tests
+   2. wiki pages documentation
 
     
     
