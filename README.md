@@ -1,4 +1,6 @@
 # QrCoder
+
+[![Join the chat at https://gitter.im/pavankumarkatakam/QrCoder](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/pavankumarkatakam/QrCoder?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 This is Laravel5 Pacakage built on top of [phpqrcode](https://github.com/t0k4rt/phpqrcode) for generating Qrcodes with different formats and helper functions to make programming dead easy.
 
 
